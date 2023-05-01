@@ -53,7 +53,8 @@ function App() {
     api
       .getUserInfo()
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data);       
+        setEmail(data.email);
       })
       .catch((data) => console.log(data));
 
