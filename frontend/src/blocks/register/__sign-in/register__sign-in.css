@@ -1,0 +1,19 @@
+.register__sign-in{
+    width: 358px;
+    margin: 15px 0 80px 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    text-align: center;
+    color: #fff;
+    background-color: #000;
+    transition: .5s;
+}
+
+.register__sign-in:hover{
+    opacity: 0.6;
+}

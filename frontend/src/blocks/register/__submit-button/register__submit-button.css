@@ -1,0 +1,22 @@
+.register__submit-button{
+    max-width: 358px;
+    width: 80vw;
+    height: 50px;
+    margin: 216px 0 0 0;
+    color: #000;
+    background-color: #fff;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    text-align: center;
+    transition: .5s;
+}
+
+.register__submit-button:hover{
+    opacity: 0.85;
+}

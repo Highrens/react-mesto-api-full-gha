@@ -1,0 +1,29 @@
+.profile__edit-image{
+    width: 100%;
+    height: 120px;
+    max-width: 120px;
+
+    object-fit: scale-down;
+    border-radius: 200px;
+    
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url(../../../images/edit.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+}
+
+.profile__edit-image:hover{
+    opacity: 1;
+}
+
+@media screen and (max-width: 600px) {
+    .profile__edit-image{
+        left: calc(50% - 60px);
+    }
+}
