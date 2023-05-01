@@ -7,11 +7,10 @@ const Card = require('../models/card');
 
 // Get возвращает карты
 module.exports.getCards = (req, res, next) => {
-  Card.find({})
-    .populate('owner')
+  Card.find({}).populate('owner')
     .populate('likes')
     .then((card) => {
-      res.send({ data: card });
+      res.send(card);
     })
     .catch(next);
 };

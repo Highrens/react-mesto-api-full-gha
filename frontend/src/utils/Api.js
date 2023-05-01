@@ -12,18 +12,19 @@ class Api {
   } 
   
     getInitialCards() {
-      return fetch(this.baseUrl  + 'cards', { headers: this.headers})
+      return fetch(this.baseUrl  + 'cards', { credentials: 'include', headers: this.headers})
         .then(this._getResponseData); // (res) => { res.ok ? res.json() : Promise.reject(res.status)})
     } 
 
     getUserInfo() {
-      return fetch(this.baseUrl  + 'users/me', { headers: this.headers})
+      return fetch(this.baseUrl  + 'user/me', {  credentials: 'include'})
       .then(this._getResponseData);
     }
     
     updateUserAvatar(avatarlink) {
       return fetch(this.baseUrl  + 'users/me/avatar', {  
         method: 'PATCH', 
+        credentials: 'include',
         headers:   this.headers,
         body: JSON.stringify({
           "avatar": avatarlink
@@ -34,6 +35,7 @@ class Api {
     updateUserInfo(name, about) {
       return fetch(this.baseUrl  + 'users/me', {  
         method: 'PATCH', 
+        credentials: 'include',
         headers: this.headers,
         body: JSON.stringify({
           name: name,
@@ -45,6 +47,7 @@ class Api {
     postNewCard({name, link}) {
       return fetch(this.baseUrl  + 'cards', {  
         method: 'POST', 
+        credentials: 'include',
         headers: this.headers,
         body: JSON.stringify({
           name: name,
@@ -56,6 +59,7 @@ class Api {
     deleteCard(cardId){
       return fetch(this.baseUrl  + 'cards/' + cardId, {  
         method: 'DELETE', 
+        credentials: 'include',
         headers: this.headers})
         .then(this._getResponseData);
     }
@@ -63,6 +67,7 @@ class Api {
     setLike(cardId){
       return fetch(this.baseUrl  + 'cards/' + cardId + '/likes', {  
         method: 'PUT', 
+        credentials: 'include',
         headers: this.headers})
         .then(this._getResponseData);
     }
@@ -70,6 +75,7 @@ class Api {
     takeLike(cardId){
       return fetch(this.baseUrl  + 'cards/' + cardId + '/likes', {  
         method: 'DELETE', 
+        credentials: 'include',
         headers: this.headers})
         .then(this._getResponseData);
     }
@@ -77,5 +83,7 @@ class Api {
 
 export const api = new Api({
   baseUrl: 'http://localhost:3001/',
-
+  headers: {
+    'Content-Type': 'application/json'
+  }
 });

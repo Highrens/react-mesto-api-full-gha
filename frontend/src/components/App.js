@@ -185,8 +185,16 @@ function App() {
           setEmail(email);
           localStorage.setItem("token", res.token);
           navigate("/", { replace: true });
+          console.log(res);
+          setCurrentUser(res);
         }
-      })
+      }).then(
+        api
+        .getInitialCards()
+        .then((data) => {
+          setCards(data);
+        })
+      )
       .catch((data) => console.log(data));
   }
   function handleSignOut() {
@@ -237,10 +245,11 @@ function App() {
             <Route
               path="/sign-in"
               element={
-                <Login
+                loggenIn ? (<Navigate to="/" replace />) : (<Login
                   handleHeaderLinkChange={handleHeaderLinkChange}
                   HandleLoginSubmit={handleLoginSubmit}
-                />
+                />)
+                
               }
             />
             <Route path="*" element={<Navigate to="/" />} />

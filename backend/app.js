@@ -17,6 +17,7 @@ const CorsOptions = {
     'http://localhost:3000',
   ],
   credentials: true,
+  maxAge: 300,
 };
 
 const { PORT = 3001 } = process.env;

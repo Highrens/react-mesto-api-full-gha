@@ -95,15 +95,15 @@ module.exports.login = (req, res, next) => {
         maxAge: 3600000,
         httpOnly: true,
       });
-      res.send({ message: 'Вы успешно вошли!' });
+      res.send(user);
     })
     .catch(next);
 };
 
 module.exports.getMe = (req, res, next) => {
   User.findById(req.user._id)
-    .then((user) => {
-      res.send(user);
+    .then((data) => {
+      res.send(data);
     })
     .catch(next);
 };
