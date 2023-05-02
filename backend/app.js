@@ -15,7 +15,7 @@ const CorsOptions = {
     'https://praktikum.tk',
     'http://praktikum.tk',
     'http://localhost:3000',
-    'http://welcometomesto.nomoredomains.monster',
+    'https://welcometomesto.nomoredomains.monster',
   ],
   credentials: true,
   maxAge: 300,
