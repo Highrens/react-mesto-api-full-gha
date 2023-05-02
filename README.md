@@ -8,8 +8,8 @@
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 158.160.60.58
 
-Frontend https://...
+Frontend https://welcometomesto.nomoredomains.monster/
 
-Backend https://...
+Backend https://api.welcometomesto.nomoredomains.monster/
