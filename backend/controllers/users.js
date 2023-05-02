@@ -18,7 +18,7 @@ module.exports.getUsers = (req, res, next) => {
 };
 // Get ищет ползователя по ID
 module.exports.getUserById = (req, res, next) => {
-  User.findById(req.body.userId)
+  User.findById(req.params.userId)
     .then((user) => {
       if (user) {
         res.send(user);
@@ -103,7 +103,7 @@ module.exports.login = (req, res, next) => {
         maxAge: 3600000,
         httpOnly: true,
       });
-      res.send(user);
+      User.findById(user._id).then((user)=> {res.send(user)});
     })
     .catch(next);
 };

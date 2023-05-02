@@ -11,13 +11,13 @@ const {
 
 router.get('/users', getUsers); // возвращает всех пользователей
 
+router.get('/users/me', getMe); // Возвращает текущего пользователя
+
 router.get('/users/:userId', celebrate({
-  body: Joi.object().keys({
-    userid: Joi.string().hex().required().length(24),
+  params: Joi.object().keys({
+    userId: Joi.string().hex().length(24).required(),
   }),
 }), getUserById); // возвращает пользователя по _id
-
-router.get('/user/me', getMe); // Возвращает текущего пользователя
 
 router.patch('/users/me', celebrate({
   body: Joi.object().keys({
