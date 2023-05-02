@@ -105,7 +105,7 @@ module.exports.login = (req, res, next) => {
       });
       res.send(user);
     })
-    .catch(next));
+    .catch(next);
 };
 
 module.exports.getMe = (req, res, next) => {
