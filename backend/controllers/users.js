@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const NotFoundError = require('../errors/not-found-err');
 const SomethingWrongError = require('../errors/something-wrong-err');
 const ConflictError = require('../errors/conflict-err');
+const UnauthorizedError = require('../errors/unauthorized-err')
 const User = require('../models/user');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
@@ -96,7 +97,7 @@ module.exports.login = (req, res, next) => {
       const token = jwt.sign(
         { _id: user._id },
         NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key',
-        { expiresIn: '7d' },
+        { expiresIn: '7d' },Я
       );
       res.cookie('jwt', token, {
         maxAge: 3600000,
@@ -104,7 +105,7 @@ module.exports.login = (req, res, next) => {
       });
       res.send(user);
     })
-    .catch(next);
+    .catch(next(new UnauthorizedError('Пользователь не найден')));
 };
 
 module.exports.getMe = (req, res, next) => {
