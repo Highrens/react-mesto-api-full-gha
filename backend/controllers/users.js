@@ -105,7 +105,7 @@ module.exports.login = (req, res, next) => {
       });
       res.send(user);
     })
-    .catch(next(new UnauthorizedError('Пользователь не найден')));
+    .catch(next));
 };
 
 module.exports.getMe = (req, res, next) => {
