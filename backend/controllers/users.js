@@ -1,9 +1,9 @@
+require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const NotFoundError = require('../errors/not-found-err');
 const SomethingWrongError = require('../errors/something-wrong-err');
 const ConflictError = require('../errors/conflict-err');
-const UnauthorizedError = require('../errors/unauthorized-err')
 const User = require('../models/user');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
@@ -103,7 +103,7 @@ module.exports.login = (req, res, next) => {
         maxAge: 3600000,
         httpOnly: true,
       });
-      User.findById(user._id).then((user)=> {res.send(user)});
+      User.findById(user._id).then((userObj) => { res.send(userObj); });
     })
     .catch(next);
 };

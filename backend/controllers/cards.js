@@ -1,5 +1,3 @@
-//  const ConflictError = require('../errors/conflict-err');
-const ConflictError = require('../errors/conflict-err');
 const NotFoundError = require('../errors/not-found-err');
 const SomethingWrongError = require('../errors/something-wrong-err');
 const NoAccsesError = require('../errors/no-accses-err');
@@ -49,7 +47,7 @@ module.exports.deleteCard = (req, res, next) => {
       }
     })
     .catch((err) => {
-      if (err.name === 'TypeError'){
+      if (err.name === 'TypeError') {
         next(new NotFoundError('Карточка по указанному _id не найдена'));
       } else if (err.name === 'CastError') {
         next(new SomethingWrongError('Ошибка: невалидный id'));
