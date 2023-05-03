@@ -81,8 +81,8 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'http://localhost:3001/',
-  //baseUrl: 'https://api.welcometomesto.nomoredomains.monster/',
+  // baseUrl: 'http://localhost:3001/',
+  baseUrl: 'https://api.welcometomesto.nomoredomains.monster/',
   headers: {
     'Content-Type': 'application/json'
   }
