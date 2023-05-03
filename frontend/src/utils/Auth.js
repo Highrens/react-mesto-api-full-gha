@@ -1,5 +1,5 @@
-export const BASE_URL = 'https://api.welcometomesto.nomoredomains.monster';
-
+// export const BASE_URL = 'https://api.welcometomesto.nomoredomains.monster';
+export const BASE_URL = 'http://localhost:3001';
 
 const _getResponseData = (res) => {
   if (!res.ok) {

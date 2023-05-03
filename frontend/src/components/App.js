@@ -132,7 +132,11 @@ function App() {
     api
       .postNewCard(newCard)
       .then((data) => {
-        setCards([data, ...cards]);
+        api
+           .getInitialCards()
+           .then((data) => {
+            setCards(data);
+          })
         closeAllPopups();
       })
       .catch((data) => console.log(data));
@@ -188,14 +192,13 @@ function App() {
           navigate("/", { replace: true });
           console.log(res);
           setCurrentUser(res);
+          api
+           .getInitialCards()
+           .then((data) => {
+            setCards(data);
+          })
         }
-      }).then(
-        api
-        .getInitialCards()
-        .then((data) => {
-          setCards(data);
-        })
-      )
+      })
       .catch((data) => console.log(data));
   }
   function handleSignOut() {

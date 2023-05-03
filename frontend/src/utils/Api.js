@@ -25,7 +25,6 @@ class Api {
       return fetch(this.baseUrl  + 'users/me/avatar', {  
         method: 'PATCH', 
         credentials: 'include',
-        headers:   this.headers,
         body: JSON.stringify({
           "avatar": avatarlink
         }) })
@@ -82,7 +81,8 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'https://api.welcometomesto.nomoredomains.monster/',
+  baseUrl: 'http://localhost:3001/',
+  //baseUrl: 'https://api.welcometomesto.nomoredomains.monster/',
   headers: {
     'Content-Type': 'application/json'
   }

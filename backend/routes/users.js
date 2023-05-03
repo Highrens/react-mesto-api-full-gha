@@ -28,7 +28,7 @@ router.patch('/users/me', celebrate({
 
 router.patch('/users/me/avatar', celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().required().pattern(/(https?:\/\/)(w{3}\.)?(([a-zA-Z0-9]+).)+/),
+    avatar: Joi.string().pattern(/(https?:\/\/)(w{3}\.)?(([a-zA-Z0-9]+).)+/).required(),
   }),
 }), updateUserAvatar); // обновляет аватар
 

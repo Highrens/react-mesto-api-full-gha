@@ -34,6 +34,11 @@ module.exports.createCard = (req, res, next) => {
 // delete удаляет карту
 module.exports.deleteCard = (req, res, next) => {
   Card.findById(req.params.cardId)
+    .then((result) => {
+      if (!result) {
+        next(new NotFoundError('Карточка по указанному _id не найдена'));
+      }
+    })
     .populate('owner')
     .then((card) => {
       if (card.owner._id.toString() === req.user._id.toString()) {
@@ -47,9 +52,7 @@ module.exports.deleteCard = (req, res, next) => {
       }
     })
     .catch((err) => {
-      if (err.name === 'TypeError') {
-        next(new NotFoundError('Карточка по указанному _id не найдена'));
-      } else if (err.name === 'CastError') {
+      if (err.name === 'CastError') {
         next(new SomethingWrongError('Ошибка: невалидный id'));
       } else {
         next(err);

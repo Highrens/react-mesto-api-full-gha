@@ -21,3 +21,9 @@
     color: rgba(255, 255, 255, 0.8);
   }
 
+@media screen and (max-width: 600px) {
+    .register__input{
+        margin: 0 22px 2px;
+        width: calc(100% - 44px);
+    }
+}

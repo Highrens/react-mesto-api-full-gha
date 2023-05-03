@@ -8,6 +8,7 @@
     line-height: 22px;
     /* identical to box height, or 122% */
     background-color:transparent;
+    border: 0;
 	text-decoration:none;
     text-align: right;
     color: #fff;
@@ -16,4 +17,15 @@
 
 .header__button:hover{
     opacity: 0.6;
+}
+
+@media screen and (max-width: 900px) {
+    .header__button{
+        margin-right: 20px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .header__button{
+        margin-right: 0;
+    }
 }
