@@ -34,22 +34,13 @@ module.exports.createCard = (req, res, next) => {
 // delete удаляет карту
 module.exports.deleteCard = (req, res, next) => {
   Card.findById(req.params.cardId)
-    .then((result) => {
-      if (!result) {
-        next(new NotFoundError('Карточка по указанному _id не найдена'));
-      }
-    })
-    .populate('owner')
     .then((card) => {
-      if (card.owner._id.toString() === req.user._id.toString()) {
-        Card.deleteOne(card).then((deletedCard) => {
-          if (deletedCard) {
-            res.send({ message: 'Карточка удалена' });
-          }
-        });
-      } else {
-        next(new NoAccsesError('Нет доступа'));
+      if (!card) {
+        throw new NotFoundError('Карточка по указанному _id не найдена');
+      } if (card.owner._id.toString() === req.user._id.toString()) {
+        return Card.deleteOne(card).then(() => { res.send({ message: 'Карточка удалена' }); });
       }
+      return new NoAccsesError('Нет доступа');
     })
     .catch((err) => {
       if (err.name === 'CastError') {
