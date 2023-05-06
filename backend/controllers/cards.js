@@ -40,7 +40,7 @@ module.exports.deleteCard = (req, res, next) => {
       } if (card.owner._id.toString() === req.user._id.toString()) {
         return Card.deleteOne(card).then(() => { res.send({ message: 'Карточка удалена' }); });
       }
-      return new NoAccsesError('Нет доступа');
+      return next(new NoAccsesError('Нет доступа'));
     })
     .catch((err) => {
       if (err.name === 'CastError') {
